@@ -6,7 +6,7 @@
 
 Say you want to download a 400gb zip file that contains around 450gb of data inside, so, you go to the store and get a 512gb stick to download it to. So, that is great, but now what? You need at least that amount of space to unzip the file, and driving back to the store, waiting on a delivery, or trying to find yet another utility that might do this are all more friction than reading about the zip file format.
 
-So, what this script does, crudely, is extracts the *last* file in the zip file, lops it off before that file, and then rewrites the indexes to make the zip file work again. This is *way slower* as we're (currently) constantly rewriting the index so that you constantly have a valid zip file most of the time. 
+So, what this script does, crudely, is extracts the *last* file in the zip file, then lops off the zip to just before that file, and then writes new indexes on the end to make the zip file work again. This is *way slower* as we're (currently) constantly rewriting the index so that you constantly have a valid zip file most of the time. 
 
 ### This code is awful
 
