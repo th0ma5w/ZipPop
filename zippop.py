@@ -356,7 +356,7 @@ class my_zip:
     def do_truncate(self):
         print('shrinking zip: ' + self.filename)
         print('old size: ' + str(self.filesize))
-        print('new size: ' + str(self.truncate_to))
+        print('new size: ' + str(self.truncate_to + len(self.new_end)))
         self.f = open(self.filename,'ab')
         self.f.seek(self.truncate_to)
         self.f.truncate()
