@@ -4,7 +4,7 @@
 
 ### What, why
 
-Say you want to download a 400gb zip file that contains around 420gb of data inside, so, you go to the store and get a 512gb stick to download it to. So, that is great, but now what? You need at least that amount of space to unzip the file, and driving back to the store, waiting on a delivery, or trying to find yet another utility that might do this are all more friction than reading about the zip file format.
+Say you want to download a 400gb zip file that contains around 450gb of data inside, so, you go to the store and get a 512gb stick to download it to. So, that is great, but now what? You need at least that amount of space to unzip the file, and driving back to the store, waiting on a delivery, or trying to find yet another utility that might do this are all more friction than reading about the zip file format.
 
 So, what this script does, crudely, is extracts the *last* file in the zip file, lops it off before that file, and then rewrites the indexes to make the zip file work again. This is *way slower* as we're (currently) constantly rewriting the index so that you constantly have a valid zip file most of the time. 
 
@@ -59,7 +59,7 @@ This example is included in the tests/ directory.
 
 ### Neat, is it compatible
 
-I used it on what I had around and a few others that I downloaded. I'm not following the spec and I am also relying on some assumptions of what I saw in the zip files on hand. I think I got 64-bit compatibility working. This was only tested on extfat, a ramdrive, and ext4, and I don't know if that matters. 
+I used it on what I had around and a few others that I downloaded. I'm not following the spec and I am also relying on some assumptions of what I saw in the zip files on hand. I think I got 64-bit compatibility working. This was only tested on exfat, a ramdrive, and ext4, and I don't know if that matters. 
 
 ### Only the last file at a time is slow
 
@@ -67,6 +67,6 @@ I think doing something like this would allow you to shift files forward in turn
 
 ### No way, not going to touch this
 
-Yeah, no, please be warned, this program deletes data and can make a mess in a way that can't be cleaned up. Do not use it anywhere near anything you want to keep. Be careful, be sure this is what you want to do.
+Yeah, no, please be warned, this program deletes data and can make a mess in a way that can't be cleaned up. Do not use it anywhere near anything you want to keep. Be careful, and be sure this is what you want to do.
 
 
