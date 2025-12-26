@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, struct, zipfile
+import json, os, struct, zipfile
 from pprint import pprint
 from pathlib import Path
 
@@ -381,10 +381,16 @@ class my_zip:
                 'eocd'  : j(EOCD_header, self.EOCD),
                 'entries' : [
                     {
-                        'cd'   : j(CD_header, e.CD),
-                        'cdx'  : j(CDX_header, e.CDX),
-                        'lfh'  : j(LFH_header, e.LFH)
-                    }
+                        'cdfh' : j(CDFH_header, e.CDFH),
+                        'lfh' : j(LFH_header, e.LFH),
+                        'val_lookup': e.val_lookup,
+                        'extra' : {
+                            'total_length': e.total_length,
+                            'compression': e.compression,
+                            'data_offset': e.data_offset,
+                            'data_end': e.data_end
+                            }
+                        }
                     for e in self.entries
                     ]
                 }
@@ -418,4 +424,13 @@ if command == "all":
     for x in range(len(z.entries)):
         z = my_zip(filename)
         z.pop_last()
+
+if command == "info":
+    z = my_zip(filename)
+    for e in z.entries:
+        e.CDFH = list(e.CDFH)
+        e.CDFH[18] = ''
+        e.CDFH[19] = ''
+        e.CDFH[17] = e.CDFH[17].decode('utf-8')
+    print(json.dumps(z.dump_info(),indent=2))
 
